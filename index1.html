@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Career Recommendation</title>
+
+    <!-- CSS START -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:yellowgreen;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color:blue;
+            color:greenyellow;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color:magenta;
+            padding: 10px;
+        }
+
+        nav a {
+            color: purple;
+            text-decoration: none;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color:blue;
+        }
+
+        .container {
+            padding: 20px;
+            background: white;
+            margin: 20px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            color:darkviolet;
+        }
+
+        label {
+            font-weight: bolder;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color:black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: green;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: darkblue;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color:peru;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+        }
+    </style>
+    <!-- CSS END -->
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>AI Career Recommendation System</h1>
+        <p>Find the best career based on your skills & interest</p>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="Home.html">Home</a>
+        <a href="Career.html">Career</a>
+        <a href="About.html">About</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <h2>Career Test (BTech CSE)</h2>
+
+        <form id="container">
+            <!--question1-->
+            <label>1.your Branch/specialization? </label><br>
+            <input type="radio" name="branch" value="AI/ML">CSE AI/AI ML<br>
+            <input type="radio" name="branch" value="DS">CSE (Data Science)<br>
+            <input type="radio" name="branch" value="CS">CSE (core)<br>
+            <input type="radio" name="branch" value="Cyber">CSE (cyber security)<br><br>
+            <!--Question 2-->
+            <label>2. How many Language do u Know?</label><br>
+            <input type="checkbox" name="language" value="C">C programing<br>
+            <input type="checkbox" name="language" value="Python">Python<br>
+            <input type="checkbox" name="language" value="Java">Java<br>
+            <input type="checkbox" name="language" value="C++">C++<br>
+            <input type="checkbox" name="language" value="HTML/CSS/JavaScript/Bootstrap">HTML/CSS/JavaScript/Bootstrap<br><br>
+
+            <!-- Question 3 -->
+            <label>3. Which Field are u intrested in?</label><br>
+            <input type="radio" name="interest" value="AI/ML">AI/ML<br>
+            <input type="radio" name="interest" value="data Science">Data Science<br>
+            <input type="radio" name="interest" value="Cyber Security">Cyber Security<br><br>
+
+            <!-- Question 4 -->
+            <label>4. What's ur Skill level?</label><br>
+            <select id="skill">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select><br><br>
+
+            <!-- Question 5 -->
+            <label>5. What Kind of work do you like?</label><br>
+            <input type="radio" name="work" value="logic"> Logical Problem Solving<br>
+            <input type="radio" name="work" value="creative"> Creative Work<br>
+            <input type="radio" name="work" value="analysis"> Analysis<br><br>
+
+            <button type="button" onclick="careerSuggest()">Submit</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 AI Career Project | Made by NITIN SINGH</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function careerSuggest() {
+             let interest = document.querySelector('input[name="interest"]:checked');
+            let work = document.querySelector('input[name="work"]:checked');
+
+            if (interest == null || work == null) {
+                document.getElementById("result").innerHTML =
+                    "⚠️ Please answer all questions!";
+                return;
+            }
+
+            let career = "";
+
+            if (interest.value === "programming" && work.value === "logic") {
+                career = "Software Developer / AI Engineer";
+            }
+            else if (interest.value === "design" && work.value === "creative") {
+                career = "UI/UX Designer";
+            }
+            else if (interest.value === "data" && work.value === "analysis") {
+                career = "Data Scientist / Data Analyst";
+            }
+            else {
+                career = "IT Professional";
+            }
+
+            document.getElementById("result").innerHTML =
+                "✅ Recommended Career: " + career;
+        }
+    </script>
+</body>
+</html>
